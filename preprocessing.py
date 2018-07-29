@@ -4,6 +4,7 @@ import cv2
 def grayConversion(inputImage):
     grayValue = 0.07 * inputImage[:, :, 2] + 0.72 * inputImage[:, :, 1] + 0.21 * inputImage[:, :, 0]
     gray = grayValue.astype(np.uint8)
+    print("Grayed")
     return gray
 
 
@@ -23,7 +24,7 @@ def medFilter(image):
             median = neighbors[4]
             b = median
             img_out[i][j] = b
-    cv2.imshow("Median Filter",img_out)
+    print("Med fil")
     return img_out
 
 def binarization(image):
