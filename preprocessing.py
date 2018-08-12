@@ -1,10 +1,11 @@
 import numpy as np
 import cv2
+from PIL import Image, ImageEnhance
+import save
 
 def grayConversion(inputImage):
     grayValue = 0.07 * inputImage[:, :, 2] + 0.72 * inputImage[:, :, 1] + 0.21 * inputImage[:, :, 0]
     gray = grayValue.astype(np.uint8)
-    print("Grayed")
     return gray
 
 
@@ -28,13 +29,5 @@ def medFilter(image):
     return img_out
 
 def binarization(image):
-    imger = image.copy()
-    height, width = image.shape
-    value = (np.sum(imger)/np.size(image))
-    for i in range(0, height):
-        for j in range(0, width):
-            if imger[i][j]<= 110:
-                imger[i][j]=0
-            else:
-                imger[i][j]=255
-    return imger
+    ret, imgf = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    return imgf

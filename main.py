@@ -2,19 +2,23 @@ import cv2
 import numpy
 import preprocessing as pp
 import segmentation as sg
+import segmentation3 as sg3
+import segmentation4 as sg4
+import digit_classifier
 
-inputImage = cv2.imread("ts.jpg")
+def main(image, what):
+    inputImage = image
+    grayedImage = pp.grayConversion(inputImage)
+    print("Grayed")
+    #medFilteredImage = pp.medFilter(grayedImage)
 
-grayedImage = pp.grayConversion(inputImage)
+    binarizedImage = pp.binarization(grayedImage)
+    print("binarized")
 
-#medFilteredImage = pp.medFilter(grayedImage)
+    heighty, widthx = binarizedImage.shape
+    #value = sg3.segFun(heighty, widthx, binarizedImage)
+    value = sg4.segFun(heighty, widthx, binarizedImage, what)
 
-binarizedImage = pp.binarization(grayedImage)
+    cv2.waitKey(0)
+    return value
 
-cv2.imshow("Binarized image ", binarizedImage)
-
-heighty, widthx = binarizedImage.shape
-
-sg.segment(binarizedImage)
-
-cv2.waitKey(0)
