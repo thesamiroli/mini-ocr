@@ -1,3 +1,4 @@
+#All credits for this code goes to my CR, Mr. Ranjan Poudel.
 def segFun(heighty, widthx, img, what):
     import numpy as np
     import cv2 as cv
@@ -5,8 +6,6 @@ def segFun(heighty, widthx, img, what):
     import save
     import preprocessing as pr
     import letter_classifier
-
-    c = []
 
     i = 0
     flag_dot = 0
@@ -104,7 +103,7 @@ def segFun(heighty, widthx, img, what):
                     img1 = cv.copyMakeBorder(img1, top=border, bottom=border, left=border, right=border, borderType= cv.BORDER_CONSTANT, value=0 )
                     if what == 0:
                         value = digit_classifier.classify(img1)
-                    elif what==1:
+                    elif what == 1:
                         value =  letter_classifier.classify(img1)
                     save.saveImage(img1)
                     j_right = 0

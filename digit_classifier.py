@@ -59,5 +59,5 @@ model = LeNet(28, 28, 1, 10)
 
 model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
-model.load_weights('digits-100-epochs.h5')
+model.load_weights('weights/digits-100-epochs.h5')
 

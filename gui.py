@@ -80,7 +80,7 @@ exitButton.grid(row=0, column=3)
 bottomFrame = Frame(root, height=400, width=800)
 bottomFrame.pack()
 
-#Down frame and its children (text)
+#Down frame and its children (output text)
 downFrame = Frame(root, height=200, width=800)
 downFrame.pack()
 downFrame.pack_propagate(0)

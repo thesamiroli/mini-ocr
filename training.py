@@ -5,10 +5,7 @@ from keras.models import Sequential
 from keras.layers.core import Activation, Flatten, Dense, Dropout
 from keras.layers.convolutional import Conv2D
 from keras.layers.pooling import MaxPool2D
-#from keras.layers.convolutional import Convolution2D, MaxPooling2D
 from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
-import cv2
 
 #---------------- 1 Preprocessing our data -----------------
 
@@ -85,8 +82,6 @@ def LeNet(width, height, channels, output):
 
 model = LeNet(28, 28, 1, 10)
 
-#If you want to look at the details of the model
-#model.summary()
 
 # --------------------- 3 Training our model ----------------
 model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
