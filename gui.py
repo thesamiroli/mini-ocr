@@ -13,7 +13,6 @@ def chooseImage():
     fileName = filedialog.askopenfilename(filetypes=(("JPEG", "*.jpg"),
                                                      ("PNG", "*.png"),
                                                      ("All Files", "*.*")))
-    #photo = ImageTk.PhotoImage(file=fileName)
     photo1 = Image.open(fileName)
 
     cvImage = cv2.imread(fileName)

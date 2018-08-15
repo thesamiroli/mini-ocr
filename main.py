@@ -1,9 +1,8 @@
 import cv2
 import numpy
 import preprocessing as pp
+
 import segmentation as sg
-import segmentation3 as sg3
-import segmentation4 as sg4
 import digit_classifier
 
 def main(image, what):
@@ -16,8 +15,7 @@ def main(image, what):
     print("binarized")
 
     heighty, widthx = binarizedImage.shape
-    #value = sg3.segFun(heighty, widthx, binarizedImage)
-    value = sg4.segFun(heighty, widthx, binarizedImage, what)
+    value = sg.segFun(heighty, widthx, binarizedImage, what)
 
     cv2.waitKey(0)
     return value

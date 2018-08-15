@@ -1,4 +1,4 @@
-import numpy as np
+#This method is used to check what the program detected as characters
 import cv2
 counter = 0
 def saveImage(img):

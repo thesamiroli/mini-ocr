@@ -50,7 +50,6 @@ def classify(image):
     testFile = image
     testFile = testFile.reshape(1, 28, 28, 1)
     single_prediction = model.predict(testFile)
-    #print("Your Predicted Number is: {}".format(np.argmax(single_prediction, axis=1)))
     predictedDigit = predictedDigit + " "+ str(np.argmax(single_prediction, axis=1)[0])
     print("Predicted digit : ", predictedDigit)
     return predictedDigit
@@ -58,8 +57,7 @@ def classify(image):
 
 model = LeNet(28, 28, 1, 10)
 
-
 model.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
-model.load_weights('cnn_mnist.h5')
+model.load_weights('digits-100-epochs.h5')
 

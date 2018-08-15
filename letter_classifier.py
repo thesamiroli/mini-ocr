@@ -34,5 +34,5 @@ model = LeNet()
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-model.load_weights('weights/my_model_weights2.h5')
+model.load_weights('weights/character-10-epochs.h5')
 

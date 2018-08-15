@@ -32,7 +32,7 @@ labels = train_data.iloc[:, 0].values
 #Converts a class vector (integers) to binary class matrix.
 labels = keras.utils.to_categorical(labels, num_classes=10)
 
-#Converting our features and labels into a numpy array
+#Converting our features and labels into a numpy array to provide input to the neural network
 features = np.array(features)
 labels = np.array(labels)
 
@@ -94,8 +94,8 @@ epochs = 20
 model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=epochs)
 
 #Saving and loading the saved weights
-model.save_weights('cnn_mnist.h5')
-model.load_weights('cnn_mnist.h5')
+model.save_weights('digits-100-epochs.h5')
+model.load_weights('digits-100-epochs.h5')
 
 
 # ---------------------4 Testing our model ---------------
@@ -107,47 +107,5 @@ print(test_set.shape)
 prediction = model.predict(test_set)
 prediction = np.argmax(prediction, axis=1)
 print(prediction)
-
-#Writing the prediction into a csv file
-df = pd.DataFrame({
-    'S.N.' : list(range(1,len(prediction)+1)),
-    'Output' : prediction
-})
-
-df.to_csv("prediction.csv", index=False, header=True)
-# -------------------- 4.1 Testing a single value --------------
-#test_x = test_data.iloc[24, :].values.reshape(1,28, 28, 1)
-testFile = cv2.imread("1.jpg", 0)
-
-testFile2 = cv2.imread("2.jpg", 0)
-
-testFile3 = cv2.imread("3.jpg", 0)
-
-#testFile4 = cv2.imread("b.jpg", 0)
-
-testFile = testFile.reshape(1, 28, 28, 1)
-single_prediction = model.predict(testFile)
-print("Your Predicted Number is: {}".format(np.argmax(single_prediction, axis=1)))
-
-testFile2 = testFile2.reshape(1,28,28,1)
-single_prediction = model.predict(testFile2)
-print("Your Predicted Number is: {}".format(np.argmax(single_prediction, axis=1)))
-
-testFile3 = testFile3.reshape(1,28,28,1)
-single_prediction = model.predict(testFile3)
-print("Your Predicted Number is: {}".format(np.argmax(single_prediction, axis=1)))
-'''
-testFile4 = testFile4.reshape(1,28,28,1)
-single_prediction = model.predict(testFile4)
-print("Your Predicted Number is: {}".format(np.argmax(single_prediction, axis=1)))
-'''
-
-
-'''
-test_x = test_data.iloc[24, :].values
-test_x = np.array(test_x)
-test_x = test_x.reshape(28, 28)
-plt.imshow(test_x, cmap='gray');
-'''
 
 

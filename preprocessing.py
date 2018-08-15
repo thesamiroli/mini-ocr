@@ -17,10 +17,8 @@ def medFilter(image):
             neighbors = list()
             for k in np.arange(-1, 2):
                 for l in np.arange(-1, 2):
-                    #a = image[i+k][j+l]
                     a = np.mean(image[i+k][j+l])
                     neighbors.append(a)
-            #print(neighbors)
             neighbors.sort()
             median = neighbors[4]
             b = median
